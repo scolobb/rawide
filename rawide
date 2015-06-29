@@ -1,0 +1,80 @@
+#!/bin/sh
+
+CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/rawide"
+BIN="${0}"
+
+[ -d "${CONFIG}" ] || mkdir -p "${CONFIG}"
+
+function def() {
+	local VAL
+	eval "VAL=\"\$${1}\""
+	printf "%s='%s'\n" "${1}" "${VAL}"
+}
+
+function findOpen() {
+	if [ -z "${OPEN}" ]
+	then
+		[ -f "${HQ}/Makefile" ] && OPEN="Makefile"
+		[ -n "${OPEN}" ] || OPEN="."
+	fi
+}
+
+function create() {
+	HQ="${PWD%/}"
+	NAME="${HQ##*/}"
+	OPEN=
+	ASK=y
+	while [ -n "${1}" ]
+	do
+		case "${1}" in
+			-o)
+				if [ -n "${2}" ]
+				then
+					OPEN="${2}"
+					shift 1
+				else
+					printf "$(gettext "-o option takes the name of a file as a parameter")" && exit 1
+				fi;;
+			-y)
+				ASK=n;;
+			*)
+				printf "$(gettext "What do you mean, '%s'")" "${1}"
+		esac
+		shift 1
+	done
+	findOpen
+	if [ n != "${ASK}" ]
+	then
+		printf "$(gettext "The name of your project seems to be '%s'. Is that correct ? (Type another name if you're dissatisfied and press [Enter] to confirm)\n")" "${NAME}"
+		read NEWNAME
+		[ -z "${NEWNAME}" ] || NAME="${NEWNAME}"
+	fi
+	def HQ > "${CONFIG}/${NAME}"
+	[ -z "${OPEN}" ] || def OPEN >> "${CONFIG}/${NAME}"
+cat <<EOF > "./${NAME}.desktop"
+[Desktop Entry]
+Icon=applications-development
+Exec=${BIN} "%c"
+Type=Application
+Categories=Development;
+Name=${NAME}
+Comment=Start coding already !
+EOF
+	chmod +x "./${NAME}.desktop"
+}
+
+function start() {
+	. "${CONFIG}/${1}"
+	findOpen
+	cd "${HQ}" && xdg-open . && ${TERMINAL} && ${EDITOR} "${OPEN}"
+}
+
+case ${1} in
+	create)
+		"$@";;
+	help) printf "$(gettext "Not implemented")\n";;
+	*)
+		NAME="${1#\'}"
+		start "${NAME%\'}";;
+esac
+
