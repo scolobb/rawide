@@ -66,7 +66,8 @@ EOF
 function start() {
 	. "${CONFIG}/${1}"
 	findOpen
-	cd "${HQ}" && xdg-open . && ${TERMINAL} && ${EDITOR} "${OPEN}"
+	cd "${HQ}"
+	xdg-open . & ${TERMINAL} & ${EDITOR} "${OPEN}"
 }
 
 case ${1} in
