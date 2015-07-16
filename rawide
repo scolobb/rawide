@@ -3,8 +3,8 @@
 CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/rawide"
 BIN="${0}"
 
-TEXTDOMAIN=rawide
-TEXTDOMAINDIR=/usr/share/locale
+export TEXTDOMAIN=rawide
+export TEXTDOMAINDIR=/usr/share/locale
 
 function fail() {
 	FORMAT="${1}\n"
