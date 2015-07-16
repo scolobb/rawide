@@ -3,6 +3,27 @@
 CONFIG="${XDG_CONFIG_HOME:-${HOME}/.config}/rawide"
 BIN="${0}"
 
+TEXTDOMAIN=rawide
+TEXTDOMAINDIR=/usr/share/locale
+
+function fail() {
+	FORMAT="${1}\n"
+	shift
+	printf "${FORMAT}" "$@" >&2
+	exit 1
+}
+
+if type -p gettext > /dev/null
+then
+	function _() {
+		gettext "$@"
+	}
+else
+	function _() {
+		printf "$@"
+	}
+fi
+
 [ -d "${CONFIG}" ] || mkdir -p "${CONFIG}"
 
 function def() {
@@ -33,19 +54,19 @@ function create() {
 					OPEN="${2}"
 					shift 1
 				else
-					printf "$(gettext "-o option takes the name of a file as a parameter")" && exit 1
+					fail "`_ "-o option takes the name of a file as a parameter"`"
 				fi;;
 			-y)
 				ASK=n;;
 			*)
-				printf "$(gettext "What do you mean, '%s'")" "${1}"
+				fail "`_ "What do you mean, '%s' ?"`" "${1}"
 		esac
 		shift 1
 	done
 	findOpen
 	if [ n != "${ASK}" ]
 	then
-		printf "$(gettext "The name of your project seems to be '%s'. Is that correct ? (Type another name if you're dissatisfied and press [Enter] to confirm)\n")" "${NAME}"
+		printf "`_ "The name of your project seems to be '%s'. Is that correct ? (Type another name if you're dissatisfied and press [Enter] to confirm)"`\n" "${NAME}"
 		read NEWNAME
 		[ -z "${NEWNAME}" ] || NAME="${NEWNAME}"
 	fi
@@ -73,7 +94,7 @@ function start() {
 case ${1} in
 	create)
 		"$@";;
-	help) printf "$(gettext "Not implemented")\n";;
+	help) printf "`_ "Not implemented"`\n";;
 	*)
 		NAME="${1#\'}"
 		start "${NAME%\'}";;
