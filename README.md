@@ -7,7 +7,7 @@ Eclipse/Netbeans/other might be good at managing your projects and having everyt
 
 They provide you with built-in menus to control *every* aspect of your development process. Well, actually not quite, because you'll always need another one should you work on some exotic project. So you resort to plugins making the whole thing even heavier while you don't even use half of the functionalities available.
 
-However I sincerely believe that they do capture something. Writing software is not just about typing code. It's about organizing various files and manage the way they interact with one another. I recently noticed that I've grown to always use the same pattern when I work (whether on professional or personal projects, even on my blog !):
+However I sincerely believe that they do capture something. Writing software is not just about typing code. It's about organizing various files and managing the way they interact with one another. I recently noticed that I've grown to always use the same pattern when I work (whether on professional or personal projects, even on my blog !):
 
 1. I edit the code with the editor I like because the way you input code **matters**
 2. I usually leave a terminal open at the root of the *project* because it's always handy and even if *some* editors provide you with a shell that's not what they were built for
