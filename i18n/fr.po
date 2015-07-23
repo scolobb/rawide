@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"PO-Revision-Date: 2015-07-23 23:04+0200\n"
+"Last-Translator:  <greg+devel@marvid.fr>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: rawide:21
+msgid ""
+"Usage: %s (init | open {PROJECT}) [OPTIONS]\n"
+"\n"
+"Commands:\n"
+"\thelp           Show this help\n"
+"\tinit           Create a new shortcut for a project\n"
+"\topen {PROJECT} Open a project to work (shouldn't need be called directly)\n"
+msgstr ""
+"Utilisation: %s (init | open {PROJET}) [OPTIONS]\n"
+"\n"
+"Commandes:\n"
+"\thelp          Afficher cette aide\n"
+"\tinit          Créer un nouveau raccourci pour un projet\n"
+"\topen {PROJET} Ouvrir un projet pour travailler dessus (vous ne devriez pas avoir besoin d'appeler cette option directement)\n"
+
+#: rawide:68
+msgid "-o option takes the name of a file as a parameter"
+msgstr "l'option -o prend le nom d'un fichier en argument"
+
+#: rawide:73
+msgid "What do you mean, '%s' ?"
+msgstr "Comment ça, '%s' ?"
+
+#: rawide:80
+msgid ""
+"The name of your project seems to be '%s'. Is that correct ? (Type another "
+"name if you're dissatisfied and press [Enter] to confirm)"
+msgstr ""
+"Votre projet semble s'appeler '%s'. Est-ce exact ? (Entrez un autre nom si "
+"cela ne vous convient pas et pressez la touche [Entrée] pour confirmer)"
+
+#: rawide:110
+msgid "'open' command takes the name of the project to open as a parameter"
+msgstr "l'option -o prend le nom d'un fichier en argument"
+
