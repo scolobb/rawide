@@ -40,7 +40,12 @@ $(TRADS)/$(NAME).pot: $(NAME)
 	xgettext -L Shell -k_ --omit-header -o $@ $<
 
 $(TRADS)/$(YOUR_LANG).po: $(TRADS)/$(NAME).pot
+ifeq ($(shell [ -f '$@' ] || echo 'missing'), missing)
+	msginit -i $^ -o $@
+else
 	msgmerge -U $@ $^
+
+endif
 
 translate: $(TRADS)/$(YOUR_LANG).po
 	$(EDITOR) $<
