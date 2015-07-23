@@ -6,13 +6,6 @@ BIN="${0}"
 export TEXTDOMAIN=rawide
 export TEXTDOMAINDIR=/usr/share/locale
 
-function fail() {
-	FORMAT="${1}\n"
-	shift
-	printf "${FORMAT}" "$@" >&2
-	exit 1
-}
-
 if type -p gettext > /dev/null
 then
 	function _() {
@@ -24,13 +17,25 @@ else
 	}
 fi
 
-[ -d "${CONFIG}" ] || mkdir -p "${CONFIG}"
+function help() {
+	printf "`_ "\
+Usage: %s (init | open {PROJECT}) [OPTIONS]
 
-function def() {
-	local VAL
-	eval "VAL=\"\$${1}\""
-	printf "%s='%s'\n" "${1}" "${VAL}"
+Commands:
+	help           Show this help
+	init           Create a new shortcut for a project
+	open {PROJECT} Open a project to work (shouldn't need be called directly)
+"`\n" "${BIN##*/}"
 }
+
+function fail() {
+	FORMAT="${1}\n"
+	shift
+	printf "${FORMAT}" "$@" >&2
+	exit 1
+}
+
+[ -d "${CONFIG}" ] || mkdir -p "${CONFIG}"
 
 function findOpen() {
 	if [ -z "${OPEN}" ]
@@ -40,7 +45,13 @@ function findOpen() {
 	fi
 }
 
-function create() {
+function def() {
+	local VAL
+	eval "VAL=\"\$${1}\""
+	printf "%s='%s'\n" "${1}" "${VAL}"
+}
+
+function init() {
 	HQ="${PWD%/}"
 	NAME="${HQ##*/}"
 	OPEN=
@@ -75,7 +86,7 @@ function create() {
 cat <<EOF > "./${NAME}.desktop"
 [Desktop Entry]
 Icon=applications-development
-Exec=${BIN} "%c"
+Exec=${BIN} open "%c"
 Type=Application
 Categories=Development;
 Name=${NAME}
@@ -84,7 +95,7 @@ EOF
 	chmod +x "./${NAME}.desktop"
 }
 
-function start() {
+function open() {
 	. "${CONFIG}/${1}"
 	findOpen
 	cd "${HQ}"
@@ -92,11 +103,13 @@ function start() {
 }
 
 case ${1} in
-	create)
-		"$@";;
-	help) printf "`_ "Not implemented"`\n";;
-	*)
-		NAME="${1#\'}"
-		start "${NAME%\'}";;
+	-h|--help|help) help;;
+	init)
+		init;;
+	open)
+		[ -n "${2}" ] || fail "`_ "'open' command takes the name of the project to open as a parameter"`"
+		TARGET="${2#\'}"
+		TARGET="${TARGET%\'}"
+		open "${TARGET}";;
 esac
 
