@@ -14,11 +14,13 @@ BIN?=usr/bin
 LOCALE?=usr/share/locale
 TARGETS=$(BIN)/$(NAME) $(MOS:$(BLD)/%.mo=$(LOCALE)/%/LC_MESSAGES/$(NAME).mo)
 INSTALLED=$(TARGETS:%=$(DESTDIR)/%)
-YOUR_LANG=$(shell echo $(LANG) | sed 's|_.*||')
+PO=$(TRADS)/$(shell echo $(LANG) | sed 's|_.*||').po
 
 # Rights
 EXEC=755
 NOEXEC=644
+
+.PHONY: all install uninstall translate clean mrproper
 
 all: $(BLD)/ $(MOS)
 
@@ -39,15 +41,15 @@ $(DESTDIR)/$(LOCALE)/%/LC_MESSAGES/$(NAME).mo: $(BLD)/%.mo
 $(TRADS)/$(NAME).pot: $(NAME)
 	xgettext -L Shell -k_ --omit-header -o $@ $<
 
-$(TRADS)/$(YOUR_LANG).po: $(TRADS)/$(NAME).pot
-ifeq ($(shell [ -f '$@' ] || echo 'missing'), missing)
+$(PO): $(TRADS)/$(NAME).pot
+ifeq ($(shell [ -f '$(PO)' ] || echo 'missing'), missing)
 	msginit -i $^ -o $@
 else
-	msgmerge -U $@ $^
+	msgmerge -o $@ $@ $^
 
 endif
 
-translate: $(TRADS)/$(YOUR_LANG).po
+translate: $(PO)
 	$(EDITOR) $<
 
 uninstall:
