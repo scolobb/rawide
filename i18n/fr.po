@@ -24,7 +24,8 @@ msgstr ""
 "Commandes:\n"
 "\thelp          Afficher cette aide\n"
 "\tinit          Créer un nouveau raccourci pour un projet\n"
-"\topen {PROJET} Ouvrir un projet pour travailler dessus (vous ne devriez pas avoir besoin d'appeler cette option directement)\n"
+"\topen {PROJET} Ouvrir un projet pour travailler dessus (vous ne devriez pas "
+"avoir besoin d'appeler cette option directement)\n"
 
 #: rawide:68
 msgid "-o option takes the name of a file as a parameter"
@@ -45,4 +46,3 @@ msgstr ""
 #: rawide:110
 msgid "'open' command takes the name of the project to open as a parameter"
 msgstr "l'option -o prend le nom d'un fichier en argument"
-
