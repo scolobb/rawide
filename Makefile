@@ -46,7 +46,6 @@ ifeq ($(shell [ -f '$(PO)' ] || echo 'missing'), missing)
 	msginit -i $^ -o $@
 else
 	msgmerge -o $@ $@ $^
-
 endif
 
 translate: $(PO)
