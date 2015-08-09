@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"PO-Revision-Date: 2015-07-23 23:04+0200\n"
+"PO-Revision-Date: 2015-08-09 22:49+0200\n"
 "Last-Translator:  <greg+devel@marvid.fr>\n"
 "Language-Team: French\n"
 "Language: fr\n"
@@ -12,12 +12,16 @@ msgstr ""
 
 #: rawide:21
 msgid ""
-"Usage: %s (init | open {PROJECT}) [OPTIONS]\n"
+"Usage: %s (init [OPTIONS] | open {PROJECT})\n"
 "\n"
 "Commands:\n"
 "\thelp           Show this help\n"
-"\tinit           Create a new shortcut for a project\n"
-"\topen {PROJECT} Open a project to work (shouldn't need be called directly)\n"
+"\tinit [OPTIONS] Create a new shortcut for a project\n"
+"\topen {PROJECT} Open a project to work (you shouldn't need it)\n"
+"\n"
+"Available options for the 'init' command are :\n"
+"\t-o {FILE}      Set the name of the main file in the project\n"
+"\t-y             Don't ask for confirmation of the project's name\n"
 msgstr ""
 "Utilisation: %s (init | open {PROJET}) [OPTIONS]\n"
 "\n"
@@ -25,17 +29,21 @@ msgstr ""
 "\thelp          Afficher cette aide\n"
 "\tinit          Créer un nouveau raccourci pour un projet\n"
 "\topen {PROJET} Ouvrir un projet pour travailler dessus (vous ne devriez pas "
-"avoir besoin d'appeler cette option directement)\n"
+"en avoir besoin)\n"
+"\n"
+"Les options disponibles pour la commande \"init\" sont :\n"
+"\t-o {FILE}      Définir le nom du fichier principal du projet\n"
+"\t-y             Ne pas demander de confirmation pour le nom du projet\n"
 
-#: rawide:68
+#: rawide:72
 msgid "-o option takes the name of a file as a parameter"
 msgstr "l'option -o prend le nom d'un fichier en argument"
 
-#: rawide:73
+#: rawide:77
 msgid "What do you mean, '%s' ?"
 msgstr "Comment ça, '%s' ?"
 
-#: rawide:80
+#: rawide:84
 msgid ""
 "The name of your project seems to be '%s'. Is that correct ? (Type another "
 "name if you're dissatisfied and press [Enter] to confirm)"
@@ -43,6 +51,6 @@ msgstr ""
 "Votre projet semble s'appeler '%s'. Est-ce exact ? (Entrez un autre nom si "
 "cela ne vous convient pas et pressez la touche [Entrée] pour confirmer)"
 
-#: rawide:110
+#: rawide:115
 msgid "'open' command takes the name of the project to open as a parameter"
 msgstr "l'option -o prend le nom d'un fichier en argument"
