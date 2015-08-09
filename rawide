@@ -19,12 +19,16 @@ fi
 
 function help() {
 	printf "`_ "\
-Usage: %s (init | open {PROJECT}) [OPTIONS]
+Usage: %s (init [OPTIONS] | open {PROJECT})
 
 Commands:
 	help           Show this help
-	init           Create a new shortcut for a project
-	open {PROJECT} Open a project to work (shouldn't need be called directly)
+	init [OPTIONS] Create a new shortcut for a project
+	open {PROJECT} Open a project to work (you shouldn't need it)
+
+Available options for the 'init' command are :
+	-o {FILE}      Set the name of the main file in the project
+	-y             Don't ask for confirmation of the project's name
 "`\n" "${BIN##*/}"
 }
 
@@ -105,11 +109,15 @@ function open() {
 case ${1} in
 	-h|--help|help) help;;
 	init)
-		init;;
+		shift
+		init "$@";;
 	open)
 		[ -n "${2}" ] || fail "`_ "'open' command takes the name of the project to open as a parameter"`"
 		TARGET="${2#\'}"
 		TARGET="${TARGET%\'}"
 		open "${TARGET}";;
+	*)
+		help
+		exit 1;;
 esac
 
