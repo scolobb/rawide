@@ -1,0 +1,56 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2015-08-11 01:49+0200\n"
+"Last-Translator:  <sivanov@colimite.fr>\n"
+"Language-Team: Russian\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: rawide:21
+msgid ""
+"Usage: %s (init [OPTIONS] | open {PROJECT})\n"
+"\n"
+"Commands:\n"
+"\thelp           Show this help\n"
+"\tinit [OPTIONS] Create a new shortcut for the project\n"
+"\topen {PROJECT} Open a project (you shouldn't need it)\n"
+"\n"
+"The available options for the 'init' command are:\n"
+"\t-o {FILE}      Set the main file of the project\n"
+"\t-y             Don't ask for confirmation of the name of the project\n"
+msgstr ""
+"Использование: %s (init [КЛЮЧ] | open {ПРОЕКТ})\n"
+"\n"
+"Команды:\n"
+"\thelp           Показать эту справку\n"
+"\tinit [КЛЮЧ]    Создать ярлык для проекта\n"
+"\topen {ПРОЕКТ}  Открыть проект для работы (обычно не требуется)\n"
+"\n"
+"Доступные ключи для команды 'init':\n"
+"\t-o {ФАЙЛ}      Установить имя главного файла проекта\n"
+"\t-y             Не требовать подтверждения имени проекта\n"
+
+#: rawide:72
+msgid "option -o requires a filename"
+msgstr "ключ -o требует имя файла в качестве параметра"
+
+#: rawide:77
+msgid "What do you mean, '%s'?"
+msgstr "Что вы имели в виду под '%s'?"
+
+#: rawide:84
+msgid ""
+"The name of your project seems to be '%s'. Is that correct? (Alternatively, "
+"type in another name and press [Enter].)"
+msgstr ""
+"Похоже, имя вашего проекта '%s'. Это верно? (Введите другое имя и нажмите "
+"[Enter] для подтверждения)"
+
+#: rawide:115
+msgid "the 'open' command requires the name of a project"
+msgstr "команда 'open' требует имя проекта в качестве аргумента"
