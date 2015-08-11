@@ -23,12 +23,12 @@ Usage: %s (init [OPTIONS] | open {PROJECT})
 
 Commands:
 	help           Show this help
-	init [OPTIONS] Create a new shortcut for a project
-	open {PROJECT} Open a project to work (you shouldn't need it)
+	init [OPTIONS] Create a new shortcut for the project
+	open {PROJECT} Open a project (you shouldn't need it)
 
-Available options for the 'init' command are :
-	-o {FILE}      Set the name of the main file in the project
-	-y             Don't ask for confirmation of the project's name
+The available options for the 'init' command are:
+	-o {FILE}      Set the main file of the project
+	-y             Don't ask for confirmation of the name of the project
 "`\n" "${BIN##*/}"
 }
 
@@ -69,19 +69,19 @@ function init() {
 					OPEN="${2}"
 					shift 1
 				else
-					fail "`_ "-o option takes the name of a file as a parameter"`"
+					fail "`_ "option -o requires a filename"`"
 				fi;;
 			-y)
 				ASK=n;;
 			*)
-				fail "`_ "What do you mean, '%s' ?"`" "${1}"
+				fail "`_ "What do you mean, '%s'?"`" "${1}"
 		esac
 		shift 1
 	done
 	findOpen
 	if [ n != "${ASK}" ]
 	then
-		printf "`_ "The name of your project seems to be '%s'. Is that correct ? (Type another name if you're dissatisfied and press [Enter] to confirm)"`\n" "${NAME}"
+		printf "`_ "The name of your project seems to be '%s'. Is that correct? (Alternatively, type in another name and press [Enter].)"`\n" "${NAME}"
 		read NEWNAME
 		[ -z "${NEWNAME}" ] || NAME="${NEWNAME}"
 	fi
@@ -112,7 +112,7 @@ case ${1} in
 		shift
 		init "$@";;
 	open)
-		[ -n "${2}" ] || fail "`_ "'open' command takes the name of the project to open as a parameter"`"
+		[ -n "${2}" ] || fail "`_ "the 'open' command requires the name of a project"`"
 		TARGET="${2#\'}"
 		TARGET="${TARGET%\'}"
 		open "${TARGET}";;
