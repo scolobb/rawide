@@ -1,0 +1,56 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"PO-Revision-Date: 2015-08-12 02:02+0200\n"
+"Last-Translator:  <sivanov@colimite.fr>\n"
+"Language-Team: Romanian\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2;\n"
+
+#: rawide:21
+msgid ""
+"Usage: %s (init [OPTIONS] | open {PROJECT})\n"
+"\n"
+"Commands:\n"
+"\thelp           Show this help\n"
+"\tinit [OPTIONS] Create a new shortcut for the project\n"
+"\topen {PROJECT} Open a project (you shouldn't need it)\n"
+"\n"
+"The available options for the 'init' command are:\n"
+"\t-o {FILE}      Set the main file of the project\n"
+"\t-y             Don't ask for confirmation of the name of the project\n"
+msgstr ""
+"Utilizare: %s (init [OPȚIUNI] | open {PROIECT})\n"
+"\n"
+"Comenzi:\n"
+"\thelp           Arată acest mesaj de ajutor\n"
+"\tinit [OPȚIUNI] Creează o scurtătură pentru proiect\n"
+"\topen {PROIECT} Deschide un proiect (n'ar trebui să aveți nevoie de această \n"
+"comandă)\n"
+"\n"
+"Opțiunile disponibile pentru comanda 'init' sunt:\n"
+"\t-o {FIȘIER}    Setează fișierul principal al proiectului\n"
+"\t-y             Suprimă necesitatea confirmării numelui proiectului\n"
+
+#: rawide:72
+msgid "option -o requires a filename"
+msgstr "opțiunea -o necesită un nume de fișier"
+
+#: rawide:77
+msgid "What do you mean, '%s'?"
+msgstr "Cum adică, '%s'?"
+
+#: rawide:84
+msgid ""
+"The name of your project seems to be '%s'. Is that correct? (Alternatively, "
+"type in another name and press [Enter].)"
+msgstr "Numele proiectului pare să fie '%s'. E corect? (Puteți să introduceți "
+"un alt nume și să apăsați [Enter] pentru confirmare.)"
+
+#: rawide:115
+msgid "the 'open' command requires the name of a project"
+msgstr "comanda 'open' necesită un nume de proiect"
